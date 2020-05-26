@@ -15,14 +15,14 @@
     <!-- NAVBAR TOP -->
     <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-            <a class="navbar-brand mr-4" href="#">GameDesign</a>
+            <a class="navbar-brand mr-4" href="{% url 'home-page' %}">GameDesign</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-item nav-link" href="#">Home</a>
+                        <a class="nav-item nav-link" href="{% url 'home-page' %}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GraphicDesigns</a>
@@ -40,7 +40,7 @@
                         <a class="nav-item nav-link" href="#">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-item nav-link" href="#">Register</a>    
+                        <a class="nav-item nav-link" href="{% url 'registration' %}">Register</a>    
                     </li>
                 </div>
             </div>
@@ -50,11 +50,18 @@
     <main role="main" class="container">
         <div class="row">
             <div class="col-md-9 mt-4 content-container">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
                 {% block content %}{% endblock %}
             </div>
             <div class="col-md-3 sidebar-container mt-5">
                 <div class="content-section">
-                    <h3>Sidebar</h3>
+                    <h3 id="sidebar-header">Sidebar</h3>
                     <p class='text-muted'>See what is up and coming down below!
                         <ul class="list-group">
                             <li class="list-group-item list-group-item-light">Latest Designs</li>

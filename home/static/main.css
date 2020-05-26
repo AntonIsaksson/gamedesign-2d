@@ -36,6 +36,9 @@ h1 {
   text-align: center;
 }
 
+#sidebar-header {
+  color: rgb(101, 152, 170);
+}
 
 .home-container {
   width: 100%;
