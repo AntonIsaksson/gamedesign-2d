@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import UserRegistrationForm
 from django.contrib import messages
 
+
 def registration(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)

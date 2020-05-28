@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>All Graphics</h1>
+    <hr>
+{% for design in designs %}
+
+
+
+
+
+
+<!--<article class="media content-section">
+    <img class="rounded-circle article-img" src="#" alt="">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">{{ design.color }}</a>
+            <small class="text-muted">{{ design.date_made|date:"F d, Y" }}</small>
+        </div>
+        <h2><a class="article-title" href="#">{{ design.title }}</a></h2>
+        <p class="article-content">{{ design.text_content }}</p>
+        <hr>
+    </div>
+</article>-->
+{% endfor %}
+
+{% endblock content %}
