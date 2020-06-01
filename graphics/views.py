@@ -1,11 +1,22 @@
 from django.shortcuts import render
-from .models import GraphicDesigns
+from .models import Creature
+from django.views.generic import (
+    ListView,
+    DetailView
+)
 
 
-def all_graphics(request):
-    context = {
-        'designs': GraphicDesigns.objects.all()
-    }
-    return render(request, 'graphics/graphics.html', context)
+class HomeListView(ListView):
+    model = Creature
+    template_name = 'home/home.html'
+    context_object_name = 'designs'
+    ordering = ['category']
+    paginate_by = 3
 
 
+class AnimatedCreaturesListView(ListView):
+    model = Creature
+    template_name = 'graphics/creatures.html'
+    context_object_name = 'designs'
+    ordering = ['-date_made']
+    paginate_by = 3
