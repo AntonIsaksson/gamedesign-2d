@@ -31,9 +31,9 @@ class HomeListViewLandscape(ListView):
     paginate_by = 1
 
 
-"""Change these 3 below "Mixin" """
+#Change these 3 below "Mixin" 
 
-"""Creatures ListView"""
+"""Objects ListViews"""
 class AnimatedCreaturesListView(ListView):
     model = Creature
     template_name = 'graphics/creatures.html'
@@ -42,7 +42,7 @@ class AnimatedCreaturesListView(ListView):
     paginate_by = 3
 
 
-"""Objects ListView"""
+
 class AnimatedObjectsListView(ListView):
     model = Object
     template_name = 'graphics/objects.html'
@@ -51,10 +51,23 @@ class AnimatedObjectsListView(ListView):
     paginate_by = 3
 
 
-"""Landscape ListView"""
+
 class LandscapeListView(ListView):
     model = Landscape
     template_name = 'graphics/landscapes.html'
     context_object_name = 'designs'
     ordering = ['-date_made']
     paginate_by = 3
+
+
+"""Detail Views"""
+class CreatureDetailView(DetailView):
+    model = Creature
+
+
+class ObjectDetailView(DetailView):
+    model = Object
+
+
+class LandscapeDetailView(DetailView):
+    model = Landscape

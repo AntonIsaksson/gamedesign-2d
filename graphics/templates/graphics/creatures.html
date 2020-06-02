@@ -10,7 +10,7 @@
             <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/08/16/10/12/dragon-1597568_960_720.png" alt="Card image cap">
         </div>
         <div class="card-body pt-0">
-        <h5 class="card-title"><a href="#">{{ item.title }}</a></h5>
+        <h5 class="card-title"><a href="{% url 'creature-detail' item.id %}">{{ item.title }}</a></h5>
         <p class="card-text">{{ item.text_content }}</p>
         
       </div>
