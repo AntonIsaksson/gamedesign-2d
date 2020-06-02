@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="pb-5">Animated Creatures</h1>
+<h1 class="pb-5">Landscapes</h1>
 <div class="row">
 {% for item in designs %}
 <div class="col-md-4 mt-4 mb-4">
     <div class="card list-item-card">
         <div class="card-img-block">
-            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/08/16/10/12/dragon-1597568_960_720.png" alt="Card image cap">
+            <img class="card-img-top" src="https://lh3.googleusercontent.com/proxy/7_RWEjxjoFXwqtLA7jt4x86DGSQ-y_fQNP9oToB7Pzijd50pdYkPP35aRCGIlv7d4pYyrOGoAtQjGLBoopAsBQJN5R6R0OCM03t7IJS9a5h84h-iPFWuGRhO5OYuXTfbdi5szyHNYA" alt="Card image cap">
         </div>
         <div class="card-body pt-0">
         <h5 class="card-title"><a href="#">{{ item.title }}</a></h5>
@@ -41,3 +41,4 @@
     {% endif %}
 
 {% endblock content %}
+

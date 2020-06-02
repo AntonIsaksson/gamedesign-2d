@@ -2,9 +2,44 @@
 
 {% block content %}
 
-{% for item in designs %}
+{% for item in creatures %}
 
-<article class="media content-section">
+    <article class="media content-section col-6">
+        <img class="rounded-circle article-img" src="#" alt="">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#">{{ item.category }}</a>
+                <small class="text-muted">{{ item.date_made|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ item.title }}</a></h2>
+            <p class="article-content">{{ item.text_content }}</p>
+            <hr>
+        </div>
+    </article>
+
+{% endfor %}
+
+
+
+{% for item in objects %}
+
+<article class="media content-section col-6">
+    <img class="rounded-circle article-img" src="#" alt="">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">{{ item.category }}</a>
+            <small class="text-muted">{{ item.date_made|date:"F d, Y" }}</small>
+        </div>
+        <h2><a class="article-title" href="#">{{ item.title }}</a></h2>
+        <p class="article-content">{{ item.text_content }}</p>
+        <hr>
+    </div>
+</article>
+{% endfor %}
+
+{% for item in landscapes %}
+
+<article class="media content-section col-12">
     <img class="rounded-circle article-img" src="#" alt="">
     <div class="media-body">
         <div class="article-metadata">
