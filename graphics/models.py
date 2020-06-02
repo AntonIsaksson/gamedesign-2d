@@ -42,7 +42,7 @@ class Creature(models.Model):
     date_made = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.title + "Image"
+        return self.title
 
 
 class Object(models.Model):
