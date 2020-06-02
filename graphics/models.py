@@ -38,11 +38,11 @@ class Creature(models.Model):
     text_content = models.TextField(default=None)
     color = models.CharField(max_length=30, choices=COLOR_CHOICE, default='Blue')
     character_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Blue')
-    image = models.ImageField(default='default.jpg', upload_to='images/creatures')
+    image = models.ImageField( upload_to='images/', blank=True, null=True)
     date_made = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.title
+        return self.title + "Image"
 
 
 class Object(models.Model):

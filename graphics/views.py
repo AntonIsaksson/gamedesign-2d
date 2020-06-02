@@ -8,11 +8,11 @@ from django.views.generic import (
 """Home ListViews (can make 1 single view for all 3? Checkout "Mixin")"""
 
 class HomeListViewCreature(ListView):
-        model = Creature
-        template_name = 'home/home.html'
-        context_object_name = 'creatures'
-        ordering = ['-date_made']
-        paginate_by = 1
+    model = Creature
+    template_name = 'home/home.html'
+    context_object_name = 'creatures'
+    ordering = ['-date_made']
+    paginate_by = 1
 
 
 class HomeListViewObject(ListView):

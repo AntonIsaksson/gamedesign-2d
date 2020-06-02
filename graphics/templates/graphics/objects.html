@@ -7,7 +7,7 @@
 <div class="col-md-4 mt-4 mb-4">
     <div class="card list-item-card">
         <div class="card-img-block">
-            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2012/04/12/19/11/fire-30231_960_720.png" alt="Card image cap">
+            <img class="card-img-top" src="{{ item.image.url }}" alt="Card image cap">
         </div>
         <div class="card-body pt-0">
         <h5 class="card-title"><a href="{% url 'object-detail' item.id %}">{{ item.title }}</a></h5>
