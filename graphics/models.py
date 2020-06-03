@@ -5,9 +5,9 @@ from PIL import Image
 
 class Category(models.Model):
     CATEGORY_CHOICE = [
-        ('AC', 'Animated Creatures'),
-        ('AO', 'Animated Objects'),
-        ('L', 'Landscapes')
+        ('Animated Creatures', 'Animated Creatures'),
+        ('Animated Objects', 'Animated Objects'),
+        ('Landscapes', 'Landscapes')
     ]
 
     title = models.CharField(max_length=20, choices=CATEGORY_CHOICE, default='Animated Creatures')
@@ -28,8 +28,8 @@ class Creature(models.Model):
         ('O', 'Other')
     ]
     TYPE_CHOICE = [
-        ('H', 'Hero'),
-        ('E', 'Enemy'),
+        ('H', 'Main Character'),
+        ('E', 'Villain'),
         ('N', 'Neutral')
     ]
 
@@ -38,7 +38,7 @@ class Creature(models.Model):
     text_content = models.TextField(default=None)
     color = models.CharField(max_length=30, choices=COLOR_CHOICE, default='Blue')
     character_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Blue')
-    image = models.ImageField( upload_to='images/', blank=True, null=True)
+    image = models.ImageField( upload_to='images/creatures', blank=True, null=True)
     date_made = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -64,7 +64,7 @@ class Object(models.Model):
                 ('stone', 'Stone')
             )
         ),
-        ('N', 'Neutral')
+        ('O', 'Other')
     ]
 
 

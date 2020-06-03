@@ -13,8 +13,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import dj_database_url 
 
-# if os.path.exists('env.py'):
-#     import env
+if os.path.exists('env.py'):
+    import env
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'gamedesign-2d.herokuapp.com']
 
@@ -114,6 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend', 
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -160,3 +163,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'home-page'
 LOGIN_URL = 'login'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'

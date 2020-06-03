@@ -1,7 +1,14 @@
+
 body {
-    background: #f1f1f1; 
+    /* background: #f1f1f1;  */
+    background: url("https://designshack.net/wp-content/uploads/abstract-background.jpg") rgba(219, 238, 255, 0.884);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: lighten;
     color: #333333;
     margin-top: 5rem;
+    
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
 }
@@ -17,7 +24,7 @@ h1 {
 }
 
 .bg-steel {
-    background-color: rgb(101, 152, 170);
+    background-color: rgba(69, 124, 143, 0.523);
     height: 4rem;
 }
 
@@ -57,39 +64,43 @@ h1 {
 }
 
 
-/*List Item Card 5*/
-.list-item-card{
+/*List Item Card */
+.list-item-card {
   margin-top:20px;
 }
+
 .list-item-card .btn{
   border-radius:2px;
   text-transform:uppercase;
   font-size:12px;
   padding:7px 20px;
 }
+
 .list-item-card .card-img-block {
+  /* min-height: 8rem;
+  max-height: 8rem; */
   width: 91%;
   margin: 0 auto;
   position: relative;
   top: -20px;
-  
 }
 
-.list-item-card .card-img-block img{
+.list-item-card .card-img-block img {
   border-radius:5px;
   /*box-shadow:0 0 10px rgba(0,0,0,0.63);*/
 }
 
-.list-item-card h5{
+.list-item-card h5 {
   color:#4E5E30;
   font-weight:600;
 }
 
-.list-item-card p{
+.list-item-card p {
   font-size:14px;
   font-weight:300;
 }
-.list-item-card .btn-primary{
+
+.list-item-card .btn-primary {
   background-color:#4E5E30;
   border-color:#4E5E30;
 }

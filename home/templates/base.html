@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +9,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,700|Taviraj" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Cormorant+SC:300,500" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-    <title>GameDesign</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>GameDesign2D</title>
 </head>
 <body>
+    
     <!-- NAVBAR TOP -->
     <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-            <a class="navbar-brand mr-4" href="{% url 'home-page' %}">GameDesign</a>
+            <a class="navbar-brand mr-4" href="{% url 'home-page' %}">
+                <img src="{% static 'img/logo_transparent_this.png' %}" width="140" height="70" class="d-inline-block align-top" alt="">
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -69,16 +73,17 @@
                 {% block content %}{% endblock %}
             </div>
             <div class="col-md-3 sidebar-container mt-5">
-                <div class="content-section">
-                    <h3 id="sidebar-header">Sidebar</h3>
-                    <p class='text-muted'>See what is up and coming down below!
-                        <ul class="list-group">
-                            <li class="list-group-item list-group-item-light">Latest Designs</li>
-                            <li class="list-group-item list-group-item-light">Most Popular</li>
-                            <li class="list-group-item list-group-item-light">Coming Up!</li>
-                            <li class="list-group-item list-group-item-light">etc</li>
-                        </ul>
-                    </p>
+                <div class="container">
+                    <div class="content-section">
+                        <h3 id="sidebar-header">Sidebar</h3>
+                        <p class='text-muted'>See what is up and coming down below!</p>
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-light">Latest Designs</li>
+                                <li class="list-group-item list-group-item-light">Most Popular</li>
+                                <li class="list-group-item list-group-item-light">Coming Up!</li>
+                                <li class="list-group-item list-group-item-light">etc</li>
+                            </ul>
+                    </div>
                 </div>
             </div>
         </div>
