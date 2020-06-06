@@ -5,7 +5,8 @@ from .views import (
     LandscapeListView,
     CreatureDetailView,
     ObjectDetailView,
-    LandscapeDetailView
+    LandscapeDetailView,
+    OrderItemView
 )
 from . import views
 
@@ -16,4 +17,5 @@ urlpatterns = [
     path('objects/<int:pk>/', ObjectDetailView.as_view(), name='object-detail' ),
     path('landscapes/', LandscapeListView.as_view(), name='landscapes' ),
     path('landscapes/<int:pk>/', LandscapeDetailView.as_view(), name='landscape-detail' ),
+    path('order/', OrderItemView.as_view(), name='order-item'),
 ]

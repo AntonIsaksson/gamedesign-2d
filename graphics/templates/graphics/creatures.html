@@ -21,6 +21,7 @@
         <div class="card-body pt-0">
         <h5 class="card-title"><a href="{% url 'creature-detail' item.id %}">{{ item.title }}</a></h5>
         <p class="card-text">{{ item.text_content }}</p>
+        
         {% else %}
         <div class="card list-item-card">
             <div class="card-img-block">
@@ -29,7 +30,10 @@
             <div class="card-body pt-0">
             <h5 class="card-title"><a href="{% url 'creature-detail' item.id %}">{{ item.title }}</a></h5>
             <p class="card-text">{{ item.text_content }}</p>
-        {% endif %}
+            <form method="GET">
+                <a href="{{ item.image }}" download="{{ item.image }}" class="btn btn-sm btn-outline-success">Download</a>
+            </form>
+            {% endif %}
       </div>
     </div>
 </div>

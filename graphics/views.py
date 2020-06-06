@@ -1,10 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import ItemOrderForm
 from .models import Creature, Object, Landscape
 from users.models import Membership, UserMembership
 from django.views.generic import (
     ListView,
     DetailView
 )
+from django.views.generic.edit import FormView
 
 """Home ListViews (can make 1 single view for all 3? Checkout "Mixin")"""
 
@@ -72,3 +75,28 @@ class ObjectDetailView(DetailView):
 
 class LandscapeDetailView(DetailView):
     model = Landscape
+
+
+class OrderItemView(FormView):
+    template_name = 'graphics/order_item.html'
+    form_class = ItemOrderForm
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+
+
+"""Send Requested Item"""
+# def order_item(request):
+
+#     if request.method == "POST":
+
+#         form = ItemOrderForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, f'Your request is being handled. An confirmation email has been sent to ')
+#             return redirect('home')
+#         else:
+#             form = ItemOrderForm()
+#         return render(request, 'graphics/order_item.html', {'form': form})

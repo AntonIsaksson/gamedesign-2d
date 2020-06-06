@@ -5,12 +5,24 @@ from users.models import Membership
 from PIL import Image
 
 
-class Category(models.Model):
-    CATEGORY_CHOICE = [
+CATEGORY_CHOICE = [
         ('Animated Creatures', 'Animated Creatures'),
         ('Animated Objects', 'Animated Objects'),
         ('Landscapes', 'Landscapes')
     ]
+
+COLOR_CHOICE = [
+        ('B', 'Blue'),
+        ('G', 'Green'),
+        ('R', 'Red'),
+        ('Y', 'Yellow'),
+        ('BR', 'Brown'),
+        ('W', 'White'),
+        ('BL', 'Black'),
+        ('O', 'Other')
+    ]
+
+class Category(models.Model):
 
     title = models.CharField(max_length=20, choices=CATEGORY_CHOICE, default='Animated Creatures')
 
@@ -18,47 +30,35 @@ class Category(models.Model):
         return self.title
 
 
-class Creature(models.Model):
-    COLOR_CHOICE = [
-        ('B', 'Blue'),
-        ('G', 'Green'),
-        ('R', 'Red'),
-        ('Y', 'Yellow'),
-        ('BR', 'Brown'),
-        ('W', 'White'),
-        ('BL', 'Black'),
-        ('O', 'Other')
-    ]
+class AllItems(models.Model):
+
+    title = models.CharField(max_length=20)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    text_content = models.TextField(default=None)
+    color = models.CharField(max_length=30, choices=COLOR_CHOICE, default='Blue')
+    image = models.ImageField( upload_to='images', blank=True, null=True)
+    date_made = models.DateTimeField(default=timezone.now)
+    allowed_memberships = models.ForeignKey(Membership, on_delete=models.SET_NULL, null=True)
+
+    class Meta:
+        abstract = True
+
+
+class Creature(AllItems):
+    
     TYPE_CHOICE = [
         ('H', 'Main Character'),
         ('E', 'Villain'),
         ('N', 'Neutral')
     ]
 
-    title = models.CharField(max_length=20)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    text_content = models.TextField(default=None)
-    color = models.CharField(max_length=30, choices=COLOR_CHOICE, default='Blue')
-    character_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Blue')
-    image = models.ImageField( upload_to='images/creatures', blank=True, null=True)
-    date_made = models.DateTimeField(default=timezone.now)
-    allowed_memberships = models.ForeignKey(Membership, on_delete=models.SET_NULL, null=True)
+    character_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Neutral')
 
     def __str__(self):
         return self.title
 
 
-class Object(models.Model):
-    COLOR_CHOICE = [
-        ('B', 'Blue'),
-        ('G', 'Green'),
-        ('R', 'Red'),
-        ('Y', 'Yellow'),
-        ('BR', 'Brown'),
-        ('W', 'White'),
-        ('BL', 'Black'),
-        ('O', 'Other')
-    ]
+class Object(AllItems):
 
     TYPE_CHOICE = [
         ('V', 'Vegetation'),
@@ -70,45 +70,23 @@ class Object(models.Model):
         ('O', 'Other')
     ]
 
-
-    title = models.CharField(max_length=20)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    text_content = models.TextField(default=None)
-    color = models.CharField(max_length=30, choices=COLOR_CHOICE, default='Blue')
-    object_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Blue')
-    image = models.ImageField(default='default.jpg', upload_to='images/objects')
-    date_made = models.DateTimeField(default=timezone.now)
+    object_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Other')
 
     def __str__(self):
         return self.title
 
 
-class Landscape(models.Model):
-    COLOR_CHOICE = [
-        ('B', 'Blue'),
-        ('G', 'Green'),
-        ('R', 'Red'),
-        ('Y', 'Yellow'),
-        ('BR', 'Brown'),
-        ('W', 'White'),
-        ('BL', 'Black'),
-        ('O', 'Other')
-    ]
+class Landscape(AllItems):
 
     TYPE_CHOICE = [
         ('forest', 'Forest'),
         ('dessert', 'Dessert'),
         ('city', 'City'),
-        ('mountains', 'Mountains')
+        ('mountains', 'Mountains'),
+        ('other', 'Other')
     ]
 
-    title = models.CharField(max_length=20)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    text_content = models.TextField(default=None)
-    main_color = models.CharField(max_length=30, choices=COLOR_CHOICE, default='Blue')
-    landscape_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Blue')
-    image = models.ImageField(default='default.jpg', upload_to='images/landscapes')
-    date_made = models.DateTimeField(default=timezone.now)
+    landscape_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Other')
 
     def __str__(self):
         return self.title
