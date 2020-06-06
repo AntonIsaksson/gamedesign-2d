@@ -165,3 +165,6 @@ LOGIN_REDIRECT_URL = 'home-page'
 LOGIN_URL = 'login'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET')

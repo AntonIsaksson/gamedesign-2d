@@ -1,5 +1,7 @@
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
+from users.models import Membership
 from PIL import Image
 
 
@@ -40,6 +42,7 @@ class Creature(models.Model):
     character_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Blue')
     image = models.ImageField( upload_to='images/creatures', blank=True, null=True)
     date_made = models.DateTimeField(default=timezone.now)
+    allowed_memberships = models.ForeignKey(Membership, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.title

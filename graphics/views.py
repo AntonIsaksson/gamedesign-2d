@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Creature, Object, Landscape
+from users.models import Membership, UserMembership
 from django.views.generic import (
     ListView,
     DetailView
@@ -38,7 +39,7 @@ class AnimatedCreaturesListView(ListView):
     model = Creature
     template_name = 'graphics/creatures.html'
     context_object_name = 'designs'
-    ordering = ['-date_made']
+    ordering = ['allowed_memberships']
     paginate_by = 3
 
 

@@ -67,6 +67,12 @@ h1 {
 /*List Item Card */
 .list-item-card {
   margin-top:20px;
+  border: 2px solid green;
+}
+
+.list-item-card-premium {
+  margin-top:20px;
+  border: 2px solid rgb(255, 199, 14);
 }
 
 .list-item-card .btn{
