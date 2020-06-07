@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'graphics.apps.GraphicsConfig',
     'django_filters',
     'storages',
+    'search.apps.SearchConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

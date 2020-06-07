@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import (
     AnimatedCreaturesListView, 
     AnimatedObjectsListView, 
@@ -10,6 +10,7 @@ from .views import (
 )
 from . import views
 
+
 urlpatterns = [
     path('creatures/', AnimatedCreaturesListView.as_view(), name='creatures' ),
     path('creatures/<int:pk>/', CreatureDetailView.as_view(), name='creature-detail' ),
@@ -18,4 +19,5 @@ urlpatterns = [
     path('landscapes/', LandscapeListView.as_view(), name='landscapes' ),
     path('landscapes/<int:pk>/', LandscapeDetailView.as_view(), name='landscape-detail' ),
     path('order/', OrderItemView.as_view(), name='order-item'),
+    path('search/', include('search.urls')),
 ]
