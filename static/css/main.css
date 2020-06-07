@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
 body {
     /* background: #f1f1f1;  */
     background: url("https://designshack.net/wp-content/uploads/abstract-background.jpg") rgba(219, 238, 255, 0.884);
@@ -9,14 +11,21 @@ body {
     color: #333333;
     margin-top: 5rem;
     
+    /* font-family: 'Varela Round', sans-serif */
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #6a6a6a;
-    font-family: 'Taviraj', serif;
-    font-weight: 400;
+    /* color: #6a6a6a; */
+    font-family: Raleway, sans-serif;
+    /* font-family: 'Varela Round', sans-serif */
+    /* font-family: 'Taviraj', serif; */
+    /* font-weight: 400; */
+
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 0px 2px 4px rgba(0,0,0,.4);
 }
 
 h1 {
