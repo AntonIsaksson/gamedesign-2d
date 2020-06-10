@@ -3,7 +3,8 @@ from django.urls import reverse
 from django.utils import timezone
 from users.models import Membership
 from PIL import Image
-
+from hitcount.models import HitCountMixin, HitCount
+from django.contrib.contenttypes.fields import GenericRelation
 
 CATEGORY_CHOICE = [
         ('Animated Creatures', 'Animated Creatures'),
@@ -38,13 +39,13 @@ class AllItems(models.Model):
     color = models.CharField(max_length=30, choices=COLOR_CHOICE, default='Blue')
     image = models.ImageField( upload_to='images', blank=True, null=True)
     date_made = models.DateTimeField(default=timezone.now)
-    allowed_memberships = models.ForeignKey(Membership, on_delete=models.SET_NULL, null=True)
-
+    
     class Meta:
         abstract = True
 
 
-class Creature(AllItems):
+"""-------------Creature/Character Models----------------"""
+class CreatureFree(AllItems):
     
     TYPE_CHOICE = [
         ('H', 'Main Character'),
@@ -52,13 +53,30 @@ class Creature(AllItems):
         ('N', 'Neutral')
     ]
 
+    allowed_memberships = models.ForeignKey(Membership, on_delete=models.SET_NULL, null=True)
     character_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Neutral')
 
     def __str__(self):
         return self.title
 
 
-class Object(AllItems):
+class CreaturePremium(AllItems):
+    
+    TYPE_CHOICE = [
+        ('H', 'Main Character'),
+        ('E', 'Villain'),
+        ('N', 'Neutral')
+    ]
+
+    allowed_memberships = models.ForeignKey(Membership, on_delete=models.SET_NULL, null=True)
+    character_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Neutral')
+
+    def __str__(self):
+        return self.title
+
+
+"""-------------Object Models----------------"""
+class ObjectFree(AllItems):
 
     TYPE_CHOICE = [
         ('V', 'Vegetation'),
@@ -76,7 +94,43 @@ class Object(AllItems):
         return self.title
 
 
-class Landscape(AllItems):
+class ObjectPremium(AllItems):
+
+    TYPE_CHOICE = [
+        ('V', 'Vegetation'),
+        ('Man-Made', (
+                ('wood', 'Wood'),
+                ('stone', 'Stone')
+            )
+        ),
+        ('O', 'Other')
+    ]
+
+    object_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Other')
+
+    def __str__(self):
+        return self.title
+
+
+
+"""-------------Landscape Models----------------"""
+class LandscapeFree(AllItems):
+
+    TYPE_CHOICE = [
+        ('forest', 'Forest'),
+        ('dessert', 'Dessert'),
+        ('city', 'City'),
+        ('mountains', 'Mountains'),
+        ('other', 'Other')
+    ]
+
+    landscape_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Other')
+
+    def __str__(self):
+        return self.title
+
+
+class LandscapePremium(AllItems):
 
     TYPE_CHOICE = [
         ('forest', 'Forest'),
