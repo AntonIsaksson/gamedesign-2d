@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block sidebar %}
+    <a href="#"><li class="list-group-item list-group-item-light">All Free Characters</li></a>
+    <a href="#"><li class="list-group-item list-group-item-light">All Premium Characters</li></a>
+    <a href="#"><li class="list-group-item list-group-item-light">Coming Up!</li></a>
+{% endblock sidebar %}
+{% block content %}
+<h1 class="pb-5">Animated Creatures</h1>
+
+<hr>
+<h3>Latest Free Characters</h3>
+<div class="container">
+    <div class="row">
+
+        {% for object in object_list %}
+            {% for item in object.creaturefree_set.all %} 
+                
+            {% if object.membership_type == 'Free' %}
+            
+                <div class="col-md-4 mt-4 mb-4">
+                    <div class="card display list-item-card">
+                        <div class="card-img-block">
+                            <img class="card-img-top" src="{{ item.image.url }}" alt="Card image cap">
+                        </div>
+                        <div class="card-body pt-0">
+                            <h5 class="card-title"><a href="{% url 'creature-detail' item.id %}">{{ item.title }}</a></h5>
+                            <p class="card-text">{{ item.text_content }}</p>
+                            <a href="{% url 'creature-detail' item.id %}" class="btn btn-sm btn-outline-info">View & Download</a>
+                        </div>
+                    </div>
+                </div>
+                
+            {% endif %}
+            {% endfor %}
+        {% endfor %} 
+
+    </div>
+</div>
+
+<hr>
+<h3>Latest Premium Characters</h3>
+<div class="container">
+    <div class="row">
+
+        {% for object in object_list %}
+            {% for item in object.creaturefree_set.all %} 
+            {% if object.membership_type != 'Free' %}
+                <div class="col-md-4 mt-4 mb-4">
+                    <div class="card display list-item-card-premium">
+                        <div class="card-img-block">
+                            <img class="card-img-top" src="{{ item.image.url }}" alt="Card image cap">
+                        </div>
+                        <div class="card-body pt-0">
+                            <h5 class="card-title"><a href="{% url 'creature-detail' item.id %}">{{ item.title }}</a></h5>
+                            <p class="card-text">{{ item.text_content }}</p>
+                            <a href="{% url 'creature-detail' item.id %}" class="btn btn-sm btn-outline-info">View & Download</a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% endfor %}
+        {% endfor %} 
+
+    </div>
+</div>
+    
+
+    
+{% endblock content %}

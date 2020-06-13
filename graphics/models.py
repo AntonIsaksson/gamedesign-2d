@@ -3,7 +3,6 @@ from django.urls import reverse
 from django.utils import timezone
 from users.models import Membership
 from PIL import Image
-from hitcount.models import HitCountMixin, HitCount
 from django.contrib.contenttypes.fields import GenericRelation
 
 CATEGORY_CHOICE = [
@@ -45,7 +44,7 @@ class AllItems(models.Model):
 
 
 """-------------Creature/Character Models----------------"""
-class CreatureFree(AllItems):
+class Creature(AllItems):
     
     TYPE_CHOICE = [
         ('H', 'Main Character'),
@@ -53,30 +52,19 @@ class CreatureFree(AllItems):
         ('N', 'Neutral')
     ]
 
-    allowed_memberships = models.ForeignKey(Membership, on_delete=models.SET_NULL, null=True)
+    allowed_memberships = models.ManyToManyField(Membership)
     character_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Neutral')
 
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('creature:detail', kwargs={'title': self.title})
 
-class CreaturePremium(AllItems):
-    
-    TYPE_CHOICE = [
-        ('H', 'Main Character'),
-        ('E', 'Villain'),
-        ('N', 'Neutral')
-    ]
-
-    allowed_memberships = models.ForeignKey(Membership, on_delete=models.SET_NULL, null=True)
-    character_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Neutral')
-
-    def __str__(self):
-        return self.title
 
 
 """-------------Object Models----------------"""
-class ObjectFree(AllItems):
+class Object(AllItems):
 
     TYPE_CHOICE = [
         ('V', 'Vegetation'),
@@ -88,28 +76,12 @@ class ObjectFree(AllItems):
         ('O', 'Other')
     ]
 
+    allowed_memberships = models.ManyToManyField(Membership)
     object_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Other')
 
     def __str__(self):
         return self.title
 
-
-class ObjectPremium(AllItems):
-
-    TYPE_CHOICE = [
-        ('V', 'Vegetation'),
-        ('Man-Made', (
-                ('wood', 'Wood'),
-                ('stone', 'Stone')
-            )
-        ),
-        ('O', 'Other')
-    ]
-
-    object_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Other')
-
-    def __str__(self):
-        return self.title
 
 
 
@@ -124,6 +96,7 @@ class LandscapeFree(AllItems):
         ('other', 'Other')
     ]
 
+    allowed_memberships = models.ManyToManyField(Membership)
     landscape_type = models.CharField(max_length=30, choices=TYPE_CHOICE, default='Other')
 
     def __str__(self):
