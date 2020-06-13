@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from graphics.models import CreatureFree, CreaturePremium, ObjectFree, ObjectPremium, LandscapeFree, LandscapePremium
+from graphics.models import Designs
 
 # def home(request):
 #     context = {
@@ -12,11 +12,6 @@ from graphics.models import CreatureFree, CreaturePremium, ObjectFree, ObjectPre
 
 def home(request):
     context = {
-        'creaturesf': CreatureFree.objects.all(),
-        'creaturesp': CreaturePremium.objects.all(),
-        'objectsf': ObjectFree.objects.all(),
-        'objectsp': ObjectPremium.objects.all(),
-        'landscapesf': LandscapeFree.objects.all(),
-        'landscapesp': LandscapePremium.objects.all()
+        'designs': Designs.objects.all(),
     }
     return render(request, 'home/home.html', context)

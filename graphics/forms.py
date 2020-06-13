@@ -1,10 +1,10 @@
 from django import forms
-from .models import AllItems
+from .models import Designs
 
 class ItemOrderForm(forms.ModelForm):
 
     class Meta:
-        model = AllItems
+        model = Designs
         fields = ['category', 'color', 'text_content']
     
     # def send_email(self):

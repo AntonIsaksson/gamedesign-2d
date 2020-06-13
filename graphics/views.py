@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.core.paginator import Paginator 
 from .forms import ItemOrderForm
-from .models import CreatureFree, CreaturePremium, ObjectFree, ObjectPremium, LandscapeFree, LandscapePremium
+from .models import Designs
 from users.models import Membership, UserMembership
 from django.views.generic import (
     View,
@@ -12,20 +12,6 @@ from django.views.generic import (
 )
 from django.views.generic.edit import FormView
 
-"""Objects ListViews
-class AnimatedCreaturesListView(ListView):
-    template_name = 'graphics/creatures.html'
-    context_object_name = 'freedesigns'
-    ordering = ['-date_made']
-    paginate_by = 3
-
-    def get_queryset(self):
-        return CreatureFree.objects.all()
-
-    def get_context_data(self, **kwargs):
-        context = super(AnimatedCreaturesListView, self).get_context_data(**kwargs)
-        context['premiumdesigns'] = CreaturePremium.objects.all()
-        return context"""
 
 def get_user_membership(request):
         user_membership_qs = UserMembership.objects.filter(user=request.user)
@@ -36,7 +22,20 @@ def get_user_membership(request):
 
 class AnimatedCreaturesListView(ListView):
     model = Membership
-    template_name ='graphics/creatures2.html'
+    template_name ='graphics/creatures.html'
+    
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        current_membership = get_user_membership(self.request)
+        context['current_membership'] = str(current_membership.membership)
+       
+        return context
+
+
+class AnimatedObjectsListView(ListView):
+    model = Membership
+    template_name ='graphics/objects.html'
     
 
     def get_context_data(self, *args, **kwargs):
@@ -48,46 +47,25 @@ class AnimatedCreaturesListView(ListView):
 
 
 
-
-
-
-
-class AnimatedObjectsListView(ListView):
-    template_name = 'graphics/objects.html'
-    context_object_name = 'freedesigns'
-    ordering = ['-date_made']
-    paginate_by = 3
-
-    def get_queryset(self):
-        return ObjectFree.objects.all()
-
-    def get_context_data(self, **kwargs):
-        context = super(AnimatedObjectsListView, self).get_context_data(**kwargs)
-        context['premiumdesigns'] = ObjectPremium.objects.all()
-        return context
-
-
 class LandscapeListView(ListView):
-    template_name = 'graphics/landscapes.html'
-    context_object_name = 'freedesigns'
-    ordering = ['-date_made']
-    paginate_by = 3
+    model = Membership
+    template_name ='graphics/landscapes.html'
+    
 
-    def get_queryset(self):
-        return LandscapeFree.objects.all()
-
-    def get_context_data(self, **kwargs):
-        context = super(LandscapeListView, self).get_context_data(**kwargs)
-        context['premiumdesigns'] = LandscapePremium.objects.all()
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        current_membership = get_user_membership(self.request)
+        context['current_membership'] = str(current_membership.membership)
+       
         return context
 
 
 """Detail Views"""
-class CreatureDetailView(LoginRequiredMixin, DetailView):
+class DetailView(LoginRequiredMixin, DetailView):
     
     def get(self, request, pk_free, *args, **kwargs):
         
-        creature = get_object_or_404(CreatureFree, pk=pk_free)
+        creature = get_object_or_404(Designs, pk=pk_free)
         user_membership = get_object_or_404(UserMembership, user=request.user)
         user_membership_type = user_membership.membership.membership_type
         designs_allowed_mem_types = creature.allowed_memberships.all()
@@ -99,28 +77,43 @@ class CreatureDetailView(LoginRequiredMixin, DetailView):
         return render(request, "graphics/detail.html", context)
 
 
-class CreatureDetailViewPremium(DetailView):
-    model = CreaturePremium
-    template_name = 'graphics/detail.html'
+# class CreatureDetailViewPremium(DetailView):
+#     model = CreaturePremium
+#     template_name = 'graphics/detail.html'
 
 
-class ObjectDetailView(DetailView):
-    model = ObjectFree
-    template_name = 'graphics/detail.html'
+# class ObjectDetailView(DetailView):
+    
+#     def get(self, request, pk_free, *args, **kwargs):
+        
+#         creature = get_object_or_404(Object, pk=pk_free)
+#         user_membership = get_object_or_404(UserMembership, user=request.user)
+#         user_membership_type = user_membership.membership.membership_type
+#         designs_allowed_mem_types = creature.allowed_memberships.all()
+#         context = {'object': None }
+#         if designs_allowed_mem_types.filter(membership_type=user_membership_type).exists():
+#             context = {'object': creature }
+#         else:
+#             context = {'object': None }
+#         return render(request, "graphics/detail.html", context)
 
-class ObjectDetailViewPremium(DetailView):
-    model = ObjectPremium
-    template_name = 'graphics/detail.html'
 
 
+# class LandscapeDetailView(DetailView):
+#     def get(self, request, pk_free, *args, **kwargs):
+        
+#         creature = get_object_or_404(Landscape, pk=pk_free)
+#         user_membership = get_object_or_404(UserMembership, user=request.user)
+#         user_membership_type = user_membership.membership.membership_type
+#         designs_allowed_mem_types = creature.allowed_memberships.all()
+#         context = {'object': None }
+#         if designs_allowed_mem_types.filter(membership_type=user_membership_type).exists():
+#             context = {'object': creature }
+#         else:
+#             context = {'object': None }
+#         return render(request, "graphics/detail.html", context)
 
-class LandscapeDetailView(DetailView):
-    model = LandscapeFree
-    template_name = 'graphics/detail.html'
 
-class LandscapeDetailViewPremium(DetailView):
-    model = LandscapePremium
-    template_name = 'graphics/detail.html'
 
 
 """Oreder Item FormView"""

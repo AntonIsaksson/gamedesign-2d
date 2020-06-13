@@ -25,7 +25,8 @@
             <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner " role="listbox" style=" height: 400px; background: url(https://lh4.ggpht.com/tyrl0wJ-lv8jVXq9ia0jTH0Oi8RtYtCv8jqmHJw3_rzKo5F2FVofdPpawmFV7QQQaTZp=h900); background-position: center; background-size: cover;">
                     
-                    {% for item in creaturesf %}
+                    {% for item in designs %}
+                    {% if item.category.title == 'Animated Creatures' %}
                         {% if forloop.first %}
                         <div class="card-image-top carousel-item text-center active">
                         {% else %}
@@ -33,11 +34,14 @@
                         {% endif %}
                             <img class=" text-center p-5 w-100"   src="{{ item.image.url }}" >
                         </div>
+                        {% endif %}
                     {% endfor %}
-                    {% for item in creaturesp %}
+                    {% for item in designs %}
+                    {% if item.category.title == 'Animated Creatures' %}
                         <div class="card-image-top carousel-item text-center">
                             <img class=" text-center p-5 w-100"   src="{{ item.image.url }}" >
                         </div>
+                    {% endif %}
                     {% endfor %}
                     
                 </div>
@@ -64,7 +68,8 @@
             <div id="carouselExampleControls2" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner " style="background: url(https://lh4.ggpht.com/tyrl0wJ-lv8jVXq9ia0jTH0Oi8RtYtCv8jqmHJw3_rzKo5F2FVofdPpawmFV7QQQaTZp=h900); background-position: center; background-size: cover;">
                     
-                    {% for item in objectsf %}
+                    {% for item in designs %}
+                    {% if item.category.title == 'Animated Objects' %}
                         {% if forloop.first %}
                         <div class="card-image-top carousel-item text-center active">
                         {% else %}
@@ -72,11 +77,14 @@
                         {% endif %}
                             <img class=" text-center p-5 w-100"   src="{{ item.image.url }}" >
                         </div>
+                        {% endif %}
                     {% endfor %}
-                    {% for item in objectsp %}
+                    {% for item in designs %}
+                    {% if item.category.title == 'Animated Objects' %}
                         <div class="card-image-top carousel-item text-center">
                             <img class=" text-center p-5 w-100"   src="{{ item.image.url }}" >
                         </div>
+                    {% endif %}
                     {% endfor %}
                     
                 </div>
@@ -102,7 +110,8 @@
             <div id="carouselExampleControls3" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner p-5" style="background: url(https://lh4.ggpht.com/tyrl0wJ-lv8jVXq9ia0jTH0Oi8RtYtCv8jqmHJw3_rzKo5F2FVofdPpawmFV7QQQaTZp=h900); background-position: center; background-size: cover;">
                     
-                    {% for item in landscapesf %}
+                    {% for item in designs %}
+                    {% if item.category.title == 'Landscapes' %}
                         {% if forloop.first %}
                         <div class="card-image-top carousel-item text-center active">
                         {% else %}
@@ -110,11 +119,14 @@
                         {% endif %}
                             <img class=" text-center p-5 w-100"   src="{{ item.image.url }}" >
                         </div>
+                        {% endif %}
                     {% endfor %}
-                    {% for item in landscapesp %}
+                    {% for item in designs %}
+                    {% if item.category.title == 'Landscapes' %}
                         <div class="card-image-top carousel-item text-center">
                             <img class=" text-center p-5 w-100"   src="{{ item.image.url }}" >
                         </div>
+                    {% endif %}
                     {% endfor %}
                     
                 </div>
