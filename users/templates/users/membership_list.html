@@ -10,10 +10,13 @@
 			<p>Price: ${{ object.price }}<small>/month</small></p>
 			<h4>Included Courses</h4>
 			<ul>
-				{% for design in object.creaturefree_set.all %}
-					<li>{{ design.title }}</li>
+				{% for design in object.designs_set.all %}
+					{% if design.category.title == 'Animated Objects' %}
+					<li>{{ design.title }} - {{ design.category }}</li>
+					{% endif %}
 				{% endfor %}
 			</ul>
+			
 			{% if object.membership_type != 'Free' %}
 			<form method="POST" action="{% url 'memberships:select' %}">
 				{% csrf_token %}

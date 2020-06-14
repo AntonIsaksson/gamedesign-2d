@@ -1,9 +1,7 @@
 from django.urls import path, include
-from .views import home
-# from graphics.views import HomeListViewCreature, HomeListViewLandscape, HomeListViewObject
+from .views import HomeListView
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home-page'),
+    path('', HomeListView.as_view(), name='home-page'),
 ]
-#Change these URLs later

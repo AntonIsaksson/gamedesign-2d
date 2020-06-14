@@ -49,7 +49,7 @@ TYPE_CHOICE_OBJECT = [
 
 class Category(models.Model):
 
-    title = models.CharField(max_length=20, choices=CATEGORY_CHOICE, default='Animated Creatures')
+    title = models.CharField(max_length=20, choices=CATEGORY_CHOICE, default=None)
 
     def __str__(self):
         return self.title
@@ -58,7 +58,7 @@ class Category(models.Model):
 class Designs(models.Model):
 
     title = models.CharField(max_length=20)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=None)
     text_content = models.TextField(default=None)
     color = models.CharField(max_length=30, choices=COLOR_CHOICE, default='Blue')
     image = models.ImageField( upload_to='images', blank=True, null=True)
