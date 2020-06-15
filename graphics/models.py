@@ -71,3 +71,6 @@ class Designs(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'title': self.title})
+    
+    class Meta:
+        ordering = ['-date_made']

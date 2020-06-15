@@ -24,32 +24,25 @@
             
             
             <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner " role="listbox" style=" height: 400px; background: url(https://lh4.ggpht.com/tyrl0wJ-lv8jVXq9ia0jTH0Oi8RtYtCv8jqmHJw3_rzKo5F2FVofdPpawmFV7QQQaTZp=h900); background-position: center; background-size: cover;">
+                <div class="carousel-inner " role="listbox" style="height: 400px; background: url(https://lh4.ggpht.com/tyrl0wJ-lv8jVXq9ia0jTH0Oi8RtYtCv8jqmHJw3_rzKo5F2FVofdPpawmFV7QQQaTZp=h900); background-position: center; background-size: cover;"> 
                     
-                    {% for object in object_list %}
-                        {% for item in object.designs_set.all %} 
-                            {% if item.category.title == 'Animated Creatures' %}
-                                {% if forloop.first %}
-                                <div class="card-image-top carousel-item text-center active">
-                                {% else %}
-                                <div class="card-image-top carousel-item text-center">
-                                {% endif %}
-                                    <img class=" text-center p-5 w-100"   src="{{ item.image.url }}" >
-                                </div>
+                    {% for item in object_list %}
+                        {% if item.category.title == 'Animated Creatures' %}
+                            {% if forloop.first %}
+                            <div class="carousel-item active p-5">
+                            {% else %}
+                            <div class="carousel-item p-5">
+                            {% endif %}
+                                <img class="d-block w-100"   src="{{ item.image.url }}"  alt="First slide">
+                            </div>
                             {% endif %}
                         {% endfor %}
-                    {% endfor %}
-                    {% for object in object_list %}
-                        {% for item in object.designs_set.all %} 
-                            {% if item.category.title == 'Animated Creatures' %}
-                                <div class="card-image-top carousel-item text-center">
-                                    <img class=" text-center p-5 w-100"   src="{{ item.image.url }}" >
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    {% endfor %}
-                    
+
                 </div>
+
+
+
+                    
                 <a class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
@@ -67,7 +60,7 @@
     <div class="container col-md-6">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title"><a href="{% url 'creatures' %}">Animated Characters</a></h4>
+                <h4 class="card-title"><a href="{% url 'objects' %}">Animated Objects</a></h4>
                 <p class="card-text">For Entrance Exams</p>
             </div>
             
@@ -75,27 +68,16 @@
             <div id="carouselExampleControls2" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner " role="listbox" style=" height: 400px; background: url(https://lh4.ggpht.com/tyrl0wJ-lv8jVXq9ia0jTH0Oi8RtYtCv8jqmHJw3_rzKo5F2FVofdPpawmFV7QQQaTZp=h900); background-position: center; background-size: cover;">
                     
-                    {% for object in object_list %}
-                        {% for item in object.designs_set.all %} 
-                            {% if item.category.title == 'Animated Objects' %}
-                                {% if forloop.first %}
-                                <div class="card-image-top carousel-item text-center active">
-                                {% else %}
-                                <div class="card-image-top carousel-item text-center">
-                                {% endif %}
-                                    <img class=" text-center p-5 w-100"   src="{{ item.image.url }}" >
-                                </div>
+                    {% for item in object_list %}
+                        {% if item.category.title == 'Animated Objects' %}
+                            {% if forloop.counter == 8 %}
+                            <div class="carousel-item active p-5">
+                            {% else %}
+                            <div class="carousel-item p-5">
                             {% endif %}
-                        {% endfor %}
-                    {% endfor %}
-                    {% for object in object_list %}
-                        {% for item in object.designs_set.all %} 
-                            {% if item.category.title == 'Animated Objects' %}
-                                <div class="card-image-top carousel-item text-center">
-                                    <img class=" text-center p-5 w-100"   src="{{ item.image.url }}" >
-                                </div>
-                            {% endif %}
-                        {% endfor %}
+                                <img class="d-block w-100"   src="{{ item.image.url }}"  alt="First slide">
+                            </div>
+                        {% endif %}
                     {% endfor %}
                     
                 </div>
@@ -114,46 +96,41 @@
     <!-- /////-->
     
     <div class="container col-md-12 mt-4">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title"><a href="{% url 'landscapes' %}">Landscapes</a></h4>
-                <p class="card-text">For Entrance Exams</p>
-            </div>
-            <!-- LANDSCAPE CAROUSEL -->
-            <div id="carouselExampleControls3" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner p-5" style="background: url(https://lh4.ggpht.com/tyrl0wJ-lv8jVXq9ia0jTH0Oi8RtYtCv8jqmHJw3_rzKo5F2FVofdPpawmFV7QQQaTZp=h900); background-position: center; background-size: cover;">
-                    
-                    {% for item in designs %}
-                    {% if item.category.title == 'Landscapes' %}
-                        {% if forloop.first %}
-                        <div class="card-image-top carousel-item text-center active">
-                        {% else %}
-                        <div class="card-image-top carousel-item text-center">
-                        {% endif %}
-                            <img class=" text-center p-5 w-100"   src="{{ item.image.url }}" >
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                    {% for item in designs %}
-                    {% if item.category.title == 'Landscapes' %}
-                        <div class="card-image-top carousel-item text-center">
-                            <img class=" text-center p-5 w-100"   src="{{ item.image.url }}" >
-                        </div>
-                    {% endif %}
-                    {% endfor %}
-                    
+        <div class="container col-md-10">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"><a href="{% url 'landscapes' %}">Landscapes</a></h4>
+                    <p class="card-text">For Entrance Exams</p>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls3" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls3" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
+                <div id="carouselExampleControls3" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner " role="listbox" style=" height: 400px; background: url(https://lh4.ggpht.com/tyrl0wJ-lv8jVXq9ia0jTH0Oi8RtYtCv8jqmHJw3_rzKo5F2FVofdPpawmFV7QQQaTZp=h900); background-position: center; background-size: cover;">
+                        
+                        {% for item in object_list %}
+                            {% if item.category.title == 'Landscapes' %}
+                                {% if forloop.counter == 6 %}
+                                <div class="carousel-item active p-5">
+                                {% else %}
+                                <div class="carousel-item p-5">
+                                {% endif %}
+                                    <img class="d-block w-100"   src="{{ item.image.url }}"  alt="First slide">
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls3" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls3" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            
             </div>
-            <!-- /////-->
         </div>
+        <!-- /////-->
     </div> 
 </div>
 {% endblock content %}

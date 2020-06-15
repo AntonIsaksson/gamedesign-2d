@@ -83,7 +83,6 @@ class MembershipSelectView(LoginRequiredMixin, ListView):
                               next payment is due {}""".format('get this value from stripe'))
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-        # assign to the session
         request.session['selected_membership_type'] = selected_membership.membership_type
 
         return HttpResponseRedirect(reverse('memberships:payment'))
@@ -101,20 +100,9 @@ def PaymentView(request):
         try:
             token = request.POST['stripeToken']
 
-            # UPDATE FOR STRIPE API CHANGE 2018-05-21
-
-            '''
-            First we need to add the source for the customer
-            '''
-
             customer = stripe.Customer.retrieve(user_membership.stripe_customer_id)
             customer.source = token # 4242424242424242
             customer.save()
-
-            '''
-            Now we can create the subscription using only the customer as we don't need to pass their
-            credit card source anymore
-            '''
 
             subscription = stripe.Subscription.create(
                 customer=user_membership.stripe_customer_id,

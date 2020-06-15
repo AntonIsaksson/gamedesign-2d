@@ -13,8 +13,8 @@
     <div class="row">
 
         {% for object in object_list %}
-            {% for item in object.designs_set.all %} 
-                {% if object.membership_type == 'Free' and item.category.title == 'Animated Creatures' %}
+            {% for item in object.designs_set.all|slice:":3"  %} 
+                {% if object.membership_type == 'Free' and item.category.title == 'Animated Creatures'%}
                     <div class="col-md-4 mt-4 mb-4">
                         <div class="card display list-item-card">
                             <div class="card-img-block">
@@ -40,8 +40,8 @@
     <div class="row">
 
         {% for object in object_list %}
-            {% for item in object.designs_set.all %} 
-            {% if object.membership_type != 'Free' %}
+            {% for item in object.designs_set.all|slice:":3" %} 
+            {% if object.membership_type != 'Free' and item.category.title == 'Animated Creatures' %}
                 <div class="col-md-4 mt-4 mb-4">
                     <div class="card display list-item-card-premium">
                         <div class="card-img-block">
