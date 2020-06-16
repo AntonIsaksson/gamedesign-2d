@@ -48,9 +48,8 @@ Firstly, I decided on the structure for the navigation and architecture of the w
 
 #### Surface & Skeleton ####
 
-![Wireframe](./wireframes/MileStoneProject4-WireFrame.pdf)
+![Wireframe](/wireframes/MileStoneProject4-WireFrame.pdf)
 
- 
 
 ### Features ###
 
