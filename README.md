@@ -6,14 +6,6 @@ An app created with the Django Framework, where you can download, buy and order 
 [![Build Status](https://travis-ci.org/AntonIsaksson/gamedesign-2d.svg?branch=master)](https://travis-ci.org/AntonIsaksson/gamedesign-2d)
 
 
-## Inspirations
-
-Fonts: https://artisanthemes.io/best-google-fonts-color-combinations-feminine-website/
-
-Tutorial: https://www.youtube.com/watch?v=UmljXZIypDc&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p
-
-Tutorial for Subscription: https://www.youtube.com/watch?v=zu2PBUHMEew
-
 
 ### UX ###
 
@@ -48,7 +40,9 @@ Firstly, I decided on the structure for the navigation and architecture of the w
 
 #### Surface & Skeleton ####
 
-![Wireframe](/wireframes/MileStoneProject4-WireFrame.pdf)
+![Wireframe](/wireframe/MileStoneProject4-WireFrame.pdf)
+
+(if can't load wirefram PDF, please see folder /wireframe)
 
 
 ### Features ###
@@ -104,3 +98,12 @@ All written content is made by myself.
 ### Media ###
 
 Most pictures are taken from https://pixabay.com/ and stored in a AWS S3 Bucket. 
+
+
+## Inspirations/Acknoweledgements
+
+Fonts: https://artisanthemes.io/best-google-fonts-color-combinations-feminine-website/
+
+Tutorial: https://www.youtube.com/watch?v=UmljXZIypDc&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p
+
+Tutorial for Subscription: https://www.youtube.com/watch?v=zu2PBUHMEew
