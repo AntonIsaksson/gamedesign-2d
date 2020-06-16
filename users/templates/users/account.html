@@ -1,23 +1,46 @@
 {% extends 'base.html' %}
-
-
+{% block sidebar %}
+    <a href="{% url 'account' %}"><li class="list-group-item list-group-item-light">Account</li></a>
+    <a href="{% url 'memberships:select' %}"><li class="list-group-item list-group-item-light">Memberships</li></a>
+    <a href="{% url 'logout' %}"><li class="list-group-item list-group-item-light">Log Out</li></a>
+{% endblock sidebar %}
 {% block content %}
 <div class="container">
 	<div class="row">
-		<h1>My Profile</h1>
-		<div class="col-sm-4 col-md-4">
+		<div class="col-12">
+		{% if user.is_authenticated %}
+			<h2 style="font-size: 3rem;">Account for <strong>{{ user.username }}</strong></h2>
+			<hr>
+		{% endif %}
+		</div>
+		
 			{% if user_subscription != None %}
-				<h4>Current Membership: {{ user_membership.membership.membership_type }} <small>since {{ user_subscription.get_created_date }}</small></h4>
-
+			<div class="col-sm-12 mt-3">
+				<h4 class="card-text card-text-membership mt-1 mb-2">
+					Current Membership: <strong>{{ user_membership.membership.membership_type }}</strong>
+				</h4>
+				<p class="mb-4">Since:  <strong style="font-size: 18px;">{{ user_subscription.get_created_date }}</strong></p>
 				{% if user_subscription.active != False %}
-					<p>Next payment due: {{ user_subscription.get_next_billing_date }}</p>
-					<a href="{% url 'memberships:cancel' %}">Cancel subscription</a>
-
+					<p>Next payment due: <strong style="font-size: 18px;">{{ user_subscription.get_next_billing_date }}</strong></p>
+					<a href="{% url 'memberships:cancel' %}"><p><strong style="text-decoration: underline;">Cancel subscription</strong></p></a>
 				{% else %}
-					<p>You don't have an active membership plan. Check them out here 
-						<a href="{% url 'memberships:select' %}">Memberships</a>
-					</p>
+					<div class="col-12">
+						<p>You don't have an active membership plan. Check them out here:</p> 
+					</div>
+					<div class="col-12">
+						<p><a href="{% url 'memberships:select' %}"><strong>Memberships</strong></a></p> 
+					</div>
+					
+					
 				{% endif %}
+			{% else %}
+			<div class="col-sm-6 offset-sm-3 mt-3">
+			<div class="col-12">
+				<p>You don't have an active membership plan.</p> 
+			</div>
+			<div class="col-12">
+				<p> Check them out here: <a href="{% url 'memberships:select' %}"><strong>Memberships</strong></a></p> 
+			</div>
 			{% endif %}
 		</div>
 	</div>

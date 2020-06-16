@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block sidebar %}
+    <a href="{% url 'registration' %}"><li class="list-group-item list-group-item-light">Register</li></a>
+{% endblock sidebar %}
 {% load crispy_forms_tags %}
 {% block content %}
     <div class="container mb-3 col-md-10">
@@ -9,16 +12,17 @@
                 <div class="col-md-8 offset-md-2">{{ form|crispy }}</div>
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Login</button>
+                <button class="btn btn-outline-info w-25" type="submit">Login</button>
             </div>
         </form>
         <div class="border-top pt-3">
-            <small class="text-muted">
-                Don't Have An Account? <a href="{% url 'registration' %}" class="ml-2">Sign Up Now</a>
-            </small>
+            <small class="text-muted">Don't Have An Account?</small>
+            <a href="{% url 'registration' %}" class="ml-2"><strong>Sign Up Now</strong></a>
+            
         </div>
-        <div class="d-flex justify-content-center links">
-            Forgot password? <a href="{% url 'reset_password' %}" class="ml-2">Reset password</a>
+        <div class="">
+            <small class="text-muted">Forgot password?</small>
+            <a href="{% url 'reset_password' %}" class="ml-2"><strong>Reset password</strong></a>
         </div>
     </div>
 {% endblock content %}

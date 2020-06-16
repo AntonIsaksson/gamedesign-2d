@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block sidebar %}
-    <a href="#"><li class="list-group-item list-group-item-light">All Free Characters</li></a>
-    <a href="#"><li class="list-group-item list-group-item-light">All Premium Characters</li></a>
+    <a href="{% url 'creatures-all' %}"><li class="list-group-item list-group-item-light">All Characters</li></a>
     <a href="#"><li class="list-group-item list-group-item-light">Coming Up!</li></a>
 {% endblock sidebar %}
 {% block content %}
@@ -23,7 +22,7 @@
                             <div class="card-body pt-0">
                                 <h5 class="card-title"><a href="{% url 'detail' item.id %}">{{ item.title }}</a></h5>
                                 <p class="card-text">{{ item.text_content }}</p>
-                                <a href="{% url 'detail' item.id %}" class="btn btn-sm btn-outline-info">View & Download</a>
+                                <a href="{% url 'detail' item.id %}" class="btn btn-sm btn-outline-success">View & Download</a>
                             </div>
                         </div>
                     </div>
@@ -50,7 +49,7 @@
                         <div class="card-body pt-0">
                             <h5 class="card-title"><a href="{% url 'detail' item.id %}">{{ item.title }}</a></h5>
                             <p class="card-text">{{ item.text_content }}</p>
-                            <a href="{% url 'detail' item.id %}" class="btn btn-sm btn-outline-info">View & Download</a>
+                            <a href="{% url 'detail' item.id %}" class="btn btn-sm btn-outline-success">View & Download</a>
                         </div>
                     </div>
                 </div>

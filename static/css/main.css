@@ -16,7 +16,7 @@ body {
     font-weight: 400;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
     /* color: #6a6a6a; */
     font-family: Raleway, sans-serif;
     /* font-family: 'Varela Round', sans-serif */
@@ -24,25 +24,101 @@ h1, h2, h3, h4, h5, h6 {
     /* font-weight: 400; */
 
     color: white;
-    text-transform: uppercase;
     text-shadow: 0px 2px 4px rgba(0,0,0,.4);
 }
 
 h1 {
+  font-family: Raleway, sans-serif;
+  color: white;
   font-size: 4rem;
+  text-shadow: #0202035e 1px 2px;
+  letter-spacing: 2px;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+/* #main-heading{
+  font-family: Viking, sans-serif;
+  color: white;
+  font-size: 4rem;
+  text-shadow: #0202035e 1px 2px;
+  letter-spacing: 2px;
+  font-weight: 200;
+} */
+
+button {
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  text-decoration: none;
+  color: #fff;
+  background: #32325d;
+  white-space: nowrap;
+  height: 40px;
+  line-height: 40px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  -webkit-transition: all 150ms ease;
+  transition: all 150ms ease;
+
+}
+
+button:hover {
+  box-shadow: 0 7px 14px rgba(50, 50, 93, .10), 0 3px 6px rgba(0, 0, 0, .08);
+  background-color: #75bae1;
+}
+
+button:focus {
+  outline: none;
+  background-color: #75bae1;
+
+}
+
+a {
+  color: #556f7c;
+  letter-spacing: 0.5px;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #d79544;
 }
 
 .bg-steel {
-    background-color: rgba(69, 124, 143, 0.523);
-    height: 4rem;
+    background-color: #d4f7ffc4;
+    height: 4.8rem;
+    padding: 0px;
+    border-bottom: 1px solid #87b2de69;
+}
+
+.fixed-top {
+  background-color: #ffffff57;
+  border-bottom: 1px solid #87b2de69;
+}
+
+.mr-auto, .mx-auto {
+  border-bottom: #ffffff 1px solid;
+}
+
+.navbar-brand {
+  padding-top: 0; 
+  padding-bottom: 0; 
 }
 
 .navbar-nav .nav-item .nav-link {
-  color: #ffffff;
+  color: #556f7c;
+  letter-spacing: 0.5px;
+  font-size: 17px;
+  font-family: Raleway, sans-serif;
+  padding-left: 20px;
 }
 
 .navbar-nav .nav-item .nav-link:hover {
-  color: #6a6a6a;
+  color: #d79544;
 }
 
 .navbar-nav .nav-item .nav-link:focus {
@@ -72,8 +148,13 @@ h1 {
   margin-bottom: 16px;
 }
 
-
+.form-control {
+  font-size: .9rem;
+  padding: .375rem .5rem;
+}
 /*List Item Card */
+
+
 .list-item-card {
   margin-top:20px;
   border: 2px solid green;
@@ -84,23 +165,23 @@ h1 {
   border: 2px solid rgb(255, 199, 14);
 }
 
-.list-item-card .btn, 
-.list-item-card-premium .btn {
-  border-radius:2px;
-  text-transform:uppercase;
-  font-size:12px;
-  padding:7px 20px;
-}
 
 .list-item-card .card-img-block,
 .list-item-card-premium .card-img-block {
-  /* min-height: 8rem;
-  max-height: 8rem; */
+
   width: 91%;
   margin: 0 auto;
   position: relative;
   top: -20px;
   height: 200px;
+}
+
+.card-img-block-landscapes{
+  max-height: 200px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  top: -20px;
 }
 
 .list-item-card .card-img-block img,
@@ -132,6 +213,108 @@ h1 {
   width: 70%
 }
 
-.card-body {
-  height: 140px;
+
+.card-body-membership {
+  height: 150px;
+}
+
+.card-title-membership {
+  color: #32325d;
+  border-bottom: 1.1px solid #e3ec62;
+  margin: 0px 70px 0px;
+}
+
+.card-text-membership{
+  color: #32325d;
+}
+
+.list-group-item {
+  font-size: 14px;
+}
+
+.list-group-item:focus, .list-group-item:hover {
+  z-index: 1;
+  text-decoration: none;
+  background-color: #80b1b9f2;
+  color: white;
+}
+
+
+
+  
+
+
+
+
+#card-errors {
+  height: 20px;
+  padding: 4px 0;
+  color: #fa755a;
+}
+
+.form-row {
+  width: 70%;
+  float: left;
+}
+
+.token {
+  color: #32325d;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 500;
+}
+
+.wrapper {
+  width: 670px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+#stripe-token-handler {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  right: 25%;
+  padding: 20px 30px;
+  border-radius: 0 0 4px 4px;
+  box-sizing: border-box;
+  box-shadow: 0 50px 100px rgba(50, 50, 93, 0.1),
+    0 15px 35px rgba(50, 50, 93, 0.15),
+    0 5px 15px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+  transform: translateY(0);
+  opacity: 1;
+  background-color: white;
+}
+
+#stripe-token-handler.is-hidden {
+  opacity: 0;
+  transform: translateY(-80px);
+}
+
+/**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.StripeElement {
+  background-color: white;
+  height: 40px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
 }

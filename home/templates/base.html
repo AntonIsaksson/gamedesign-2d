@@ -5,72 +5,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="{% static 'img/logo_transparent_2.png' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/dragon-logo.png' %}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,700|Taviraj" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Cormorant+SC:300,500" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link href="//db.onlinewebfonts.com/c/63fcaee854aebdfac2a7feabee0e81f7?family=Viking" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'js/main.js' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <title>GameDesign2D</title>
+
 </head>
 <body>
     
     <!-- NAVBAR TOP -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+<div class="fixed-top">
+    <nav class="navbar navbar-dark bg-steel">
         <div class="container">
-            <a class="navbar-brand mr-4" href="{% url 'home-page' %}">
-                <img src="{% static 'img/logo_transparent_2.png' %}" width="80" height="60"  alt="">
+            <a class="navbar-brand" href="{% url 'home-page' %}">
+                <img class="ml-4" src="{% static 'img/dragon-logo.png' %}" width="90" height="80"  alt="">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler mr-4" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarToggle">
-                <div class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-item nav-link" href="{% url 'home-page' %}">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GraphicDesigns</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="{% url 'creatures' %}">Animated Characters</a>
-                            <a class="dropdown-item" href="{% url 'objects' %}">Animated Objects</a>
-                            <a class="dropdown-item" href="{% url 'landscapes' %}">Landscapes</a>
-                            <a class="dropdown-item" href="#">Packages</a>
-                        </div>
-                    </li>
-                </div>
-                <!-- Navbar Right Side -->
-                <div class="navbar-nav">
-                    <div class="display">
-                        <form action="{% url 'search' %}" class="form-inline" method="GET">
-                            <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="search">Search</button>
-                        </form>
-                    </div>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-item nav-link" href="{% url 'account' %}">Account</a>    
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-item nav-link" href="{% url 'memberships:select' %}">Memberships</a>    
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-item nav-link" href="{% url 'registration' %}">Register</a>    
-                    </li>
-                    {% endif %}
-                </div>
-            </div>
         </div>
     </nav>
-
+    <div class="collapse navbar-collapse container" id="navbarToggle">
+        <div class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="{% url 'home-page' %}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GraphicDesigns</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'creatures' %}">Animated Characters</a>
+                    <a class="dropdown-item" href="{% url 'objects' %}">Animated Objects</a>
+                    <a class="dropdown-item" href="{% url 'landscapes' %}">Landscapes</a>
+                    <a class="dropdown-item" href="{% url 'order-item' %}">Order Design</a>
+                </div>
+            </li>
+        </div>
+        <!-- Navbar Right Side -->
+        <div class="navbar-nav">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="{% url 'account' %}">Account For: <strong>{{ user.username }}</strong></a> 
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="{% url 'memberships:select' %}">Memberships</a>    
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a> 
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="{% url 'registration' %}">Register</a>    
+            </li>
+            {% endif %}
+        </div>
+    </div>
+</div>
     <main role="main" class="container">
         <div class="row">
             <div class="col-md-9 mt-4 content-container">
@@ -84,10 +82,18 @@
                 {% block content %}{% endblock %}
             </div>
             <div class="col-md-3 sidebar-container mt-5">
+                
                 <div class="container">
                     <div class="content-section">
                         <h3 id="sidebar-header">Sidebar</h3>
-                        <p class='text-muted'>See what is up and coming down below!</p>
+                        
+                            <form action="{% url 'search' %}" class="mt-3 mb-3 container form-inline" method="GET">
+                                <div class="row">
+                                        <input class="col-md-7 form-control" type="text" name="q" placeholder="Search" aria-label="Search">
+                                        <button class="col-md-4 offset-md-1 btn btn-outline-info " type="search">Search</button>
+                                </div>
+                            </form>
+                        
                             
                             <ul class="list-group">
                                 {% block sidebar %}
@@ -103,6 +109,7 @@
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

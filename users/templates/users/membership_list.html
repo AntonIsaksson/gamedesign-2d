@@ -1,33 +1,43 @@
 {% extends 'base.html' %}
-
+{% block sidebar %}
+    <a href="{% url 'account' %}"><li class="list-group-item list-group-item-light">Account</li></a>
+    <a href="{% url 'memberships:select' %}"><li class="list-group-item list-group-item-light">Memberships</li></a>
+    <a href="{% url 'logout' %}"><li class="list-group-item list-group-item-light">Log Out</li></a>
+{% endblock sidebar %}
 {% block content %}
 <div class="container">
 	<h1>Select a membership</h1>
 	<div class="row">
 		{% for object in object_list %}
-		<div class="col-sm-4 col-md-4">
-			<h2>{{ object.membership_type }}</h2>
-			<p>Price: ${{ object.price }}<small>/month</small></p>
-			<h4>Included Courses</h4>
-			<ul>
-				{% for design in object.designs_set.all %}
-					{% if design.category.title == 'Animated Objects' %}
-					<li>{{ design.title }} - {{ design.category }}</li>
-					{% endif %}
-				{% endfor %}
-			</ul>
-			
-			{% if object.membership_type != 'Free' %}
-			<form method="POST" action="{% url 'memberships:select' %}">
-				{% csrf_token %}
-				{% if object.membership_type != current_membership %}
-					<button class="btn btn-warning">Select</button>
-				{% else %}
-					<small>This is your current membership</small>
-				{% endif %}
-				<input type="hidden" name="membership_type" value="{{ object.membership_type }}">
-			</form>			
-			{% endif %}	
+		<div class="col-sm-6">
+			{% if object.membership_type == current_membership %}
+			<div class="card mt-3" style="border: 1.5px solid #28a745;">
+			{% else %}
+			<div class="card mt-3">
+			{% endif %}
+				<h2 class="card-title card-title-membership mt-3">{{ object.membership_type }}</h2>
+				<h5 class="card-text card-text-membership mt-4">Price:<strong> {{ object.price }}:-</strong><small>/month</small></h5>
+				<div class="card-body card-body-membership">
+				  	
+					{% if object.membership_type != 'Free' %}
+					<p class="card-text">Access to ALL content on the website!</p>
+					<form method="POST" action="{% url 'memberships:select' %}">
+						{% csrf_token %}
+						{% if object.membership_type != current_membership %}
+							<button class="btn btn-warning">Select</button>
+						{% else %}
+							<small>(This is your current membership)</small>
+						{% endif %}
+						<input type="hidden" name="membership_type" value="{{ object.membership_type }}">
+					</form>
+					{% elif object.membership_type == 'Free'%}
+						<p class="card-text">Access to all free content on the website!</p>
+							{% if object.membership_type == current_membership %}
+								<p class="card-text mt-3"><small>(This is your current membership)</small></p>
+							{% endif %}			
+					{% endif %}	
+				</div>
+			</div>	
 		</div>
 		{% endfor %}
 	</div>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block sidebar %}
+    <a href="{% url 'creatures' %}"><li class="list-group-item list-group-item-light">Characters</li></a>
+    <a href="{% url 'objects' %}"><li class="list-group-item list-group-item-light">Objects</li></a>
+    <a href="{% url 'landscapes' %}"><li class="list-group-item list-group-item-light">Landscapes</li></a>
+{% endblock sidebar %}
+{% block content %}
+<h1 class="pb-5">All Newest Items</h1>
+
+<div class="container">
+    <div class="row">
+
+        {% for object in object_list %}
+                    <div class="col-md-4 mt-4 mb-4">
+                        {% if object.allowed_memberships.membership.membership_type == 'Free' %} 
+                        <div class="card display list-item-card">
+                        {% else %}
+                        <div class="card display list-item-card-premium">
+                        {% endif %}
+                            <div class="card-img-block">
+                                <img class="card-img-top" src="{{ object.image.url }}" alt="Card image cap">
+                            </div>
+                            <div class="card-body pt-0">
+                                <h5 class="card-title"><a href="{% url 'detail' object.id %}">{{ object.title }}</a></h5>
+                                <p class="card-text"><small>Made:</small> <strong>{{ object.date_made }}</strong></p>
+                                <a href="{% url 'detail' object.id %}" class="btn btn-sm btn-outline-success">View & Download</a>
+                            </div>
+                        </div>
+                    </div>
+        {% endfor %} 
+
+    </div>
+
+{% if is_paginated %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <a class="btn btn-secondary mb-4" href="?page={{ num }}">{{ num }}</a> 
+            {% elif num > page_obj.number|add:'-3'  and num < page_obj.number|add:'3' %}
+                <a class="btn btn-outline-secondary mb-4" href="?page={{ num }}">{{ num }}</a> 
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+
+    
+
+    
+{% endblock content %}

@@ -1,21 +1,36 @@
 {% extends 'base.html' %}
-
+{% block sidebar %}
+    <a href="{% url 'creatures' %}"><li class="list-group-item list-group-item-light">Characters</li></a>
+    <a href="{% url 'objects' %}"><li class="list-group-item list-group-item-light">Objects</li></a>
+    <a href="{% url 'landscapes' %}"><li class="list-group-item list-group-item-light">Landscapes</li></a>
+{% endblock sidebar %}
 {% block content %}
 {% if object is not None %}
-    <h1 class="pb-5">{{ object.title }}</h1>
+    <h1 class="ml-2 text-left pb-3" style="text-transform: capitalize;">{{ object.title }}</h1>
     <div class="card p-4 mb-3">
         <div class="row no-gutters">
             <div class="col-md-5">
+                {% if object.category.title == 'Landscapes' %}
+                <img class="card-img-top w-100" src="{{ object.image.url }}" alt="Card image cap">
+                {% else %}
                 <img class="card-img-top" src="{{ object.image.url }}" alt="Card image cap">
+                {% endif %}
             </div>
             <div class="offset-md-1 col-md-6">
                 <div class="card-body text-left">
-                    <h3 class="card-title">{{ object.title }}</h3>
+                    <h3 class="card-title card-text-membership">{{ object.title }}</h3>
                     <p class="card-text">{{ object.text_content }}</p>
-                    <p class="card-text"><small class="text-muted">{{ object.date_made }}</small></p>
-                    <form method="GET">
-                        <a href="{{ object.image.wget }}" download="{{ object.image }}" class="btn btn-sm btn-outline-success">Download</a>
-                    </form>
+                    <p class="card-text card-text-membership"><small>Date Made: </small><strong>{{ object.date_made }}</strong></p>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="{{ object.image.url }}" target="_blank" class="btn btn-sm btn-outline-info">View Full Image</a>
+                        </div>
+                        <div class="col-6">
+                            <form method="GET">
+                                <a href="{{ object.image.wget }}" download="{{ object.image }}" class="btn btn-sm btn-outline-success">Download</a>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

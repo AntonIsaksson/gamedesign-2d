@@ -22,14 +22,31 @@ def get_user_membership(request):
         return None
 
 
+class LatestItemsListView(ListView):
+    model = Designs
+    template_name = 'graphics/latest.html'
+    ordering = ['-date_made']
+    paginate_by = 6
+
+
 class AnimatedCreaturesListView(ListView):
     model = Membership
     template_name ='graphics/creatures.html'
+
+class AllCreaturesListView(ListView):
+    model = Membership
+    template_name ='graphics/all_creatures.html'
+    ordering = ['-id']
 
 
 class AnimatedObjectsListView(ListView):
     model = Membership
     template_name ='graphics/objects.html'
+
+class AllObjectsListView(ListView):
+    model = Membership
+    template_name ='graphics/all_objects.html'
+    ordering = ['-id']
 
 
 
@@ -37,6 +54,10 @@ class LandscapeListView(ListView):
     model = Membership
     template_name ='graphics/landscapes.html'
     
+class AllLandscapesListView(ListView):
+    model = Membership
+    template_name ='graphics/all_landscapes.html'
+    ordering = ['-id']
 
 
 """Detail Views"""
@@ -67,7 +88,7 @@ class OrderItemView(FormView):
 
     def form_valid(self, form):
         send_mail('Order 2D Item',
-                    'Thank you for your order! You will have get your order within 7 days.',
+                    'Thank you for your order! We will get back to you within 3 working days with a paymentplan.',
                     'hanzzanton@gmail.com',
                     ['anton.isak@outlook.com'],
                     fail_silently=False)

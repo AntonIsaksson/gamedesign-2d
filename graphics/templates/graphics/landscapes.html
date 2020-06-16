@@ -5,7 +5,7 @@
     <a href="#"><li class="list-group-item list-group-item-light">Coming Up!</li></a>
 {% endblock sidebar %}
 {% block content %}
-<h1 class="pb-5">Animated Objects</h1>
+<h1 class="pb-5">Landscapes</h1>
 
 <hr>
 <h3>Latest Free Landscapes</h3>
@@ -17,13 +17,13 @@
                 {% if object.membership_type == 'Free' and item.category.title == 'Landscapes' %}
                     <div class="col-md-4 mt-4 mb-4">
                         <div class="card display list-item-card">
-                            <div class="card-img-block">
+                            <div class="card-img-block-landscapes">
                                 <img class="card-img-top" src="{{ item.image.url }}" alt="Card image cap">
                             </div>
                             <div class="card-body pt-0">
                                 <h5 class="card-title"><a href="{% url 'detail' item.id %}">{{ item.title }}</a></h5>
                                 <p class="card-text">{{ item.text_content }}</p>
-                                <a href="{% url 'detail' item.id %}" class="btn btn-sm btn-outline-info">View & Download</a>
+                                <a href="{% url 'detail' item.id %}" class="btn btn-sm btn-outline-success">View & Download</a>
                             </div>
                         </div>
                     </div>
@@ -44,13 +44,13 @@
             {% if object.membership_type != 'Free' and item.category.title == 'Landscapes' %}
                 <div class="col-md-4 mt-4 mb-4">
                     <div class="card display list-item-card-premium">
-                        <div class="card-img-block">
+                        <div class=" card-img-block-landscapes">
                             <img class="card-img-top" src="{{ item.image.url }}" alt="Card image cap">
                         </div>
                         <div class="card-body pt-0">
                             <h5 class="card-title"><a href="{% url 'detail' item.id %}">{{ item.title }}</a></h5>
                             <p class="card-text">{{ item.text_content }}</p>
-                            <a href="{% url 'detail' item.id %}" class="btn btn-sm btn-outline-info">View & Download</a>
+                            <a href="{% url 'detail' item.id %}" class="btn btn-sm btn-outline-success">View & Download</a>
                         </div>
                     </div>
                 </div>

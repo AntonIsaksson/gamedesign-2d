@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block sidebar %}
+    <a href="{% url 'login' %}"><li class="list-group-item list-group-item-light">Log In</li></a>
+{% endblock sidebar %}
 {% load crispy_forms_tags %}
 {% block content %}
     <div class="container mb-3 col-md-10">
@@ -13,9 +16,9 @@
             </div>
         </form>
         <div class="border-top pt-3">
-            <small class="text-muted">
-                Already Have An Account? <a href="#" class="ml-2">Sign In</a>
-            </small>
+            <small class="text-muted">Already Have An Account?</small> 
+            <a href="#" class="ml-2"><strong>Sign In</strong></a>
+            
         </div>
     </div>
 
