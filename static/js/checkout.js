@@ -1,6 +1,6 @@
 //----------JAVASCRIPT FOR HANDLING STRIPE PAYMENTS---------//
 
-var stripe = Stripe('pk_test_51GihHRKRks0wHR1VAn3d4sqbjzIuP4a6rhMQfrPFWTIiLCXiHSCnTDooHTXgJE8tylzzYTLyTSDRHyfYXYprFGgJ00xAnP6eqP');
+var stripe = Stripe('STRIPE_PUBLISHABLE_KEY');
 
   // Create an instance of Elements.
   var elements = stripe.elements();
