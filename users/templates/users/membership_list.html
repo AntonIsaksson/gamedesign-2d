@@ -11,9 +11,9 @@
 		{% for object in object_list %}
 		<div class="col-sm-6">
 			{% if object.membership_type == current_membership %}
-			<div class="card mt-3" style="border: 1.5px solid #28a745;">
+			<div class="card mt-3 mb-3" style="border: 1.5px solid #28a745;">
 			{% else %}
-			<div class="card mt-3">
+			<div class="card mt-3 mb-3">
 			{% endif %}
 				<h2 class="card-title card-title-membership mt-3">{{ object.membership_type }}</h2>
 				<h5 class="card-text card-text-membership mt-4">Price:<strong> {{ object.price }}:-</strong><small>/month</small></h5>

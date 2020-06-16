@@ -4,6 +4,7 @@
 
 /*------------------------------------------------------------------------------------------Custom CSS*/
 body {
+    
     background: url("https://designshack.net/wp-content/uploads/abstract-background.jpg") rgba(219, 238, 255, 0.884);
     background-position: center;
     background-repeat: no-repeat;
@@ -17,8 +18,8 @@ body {
 
 h1 {
   font-family: Raleway, sans-serif;
+  font-size: 1.5rem;
   color: white;
-  font-size: 4rem;
   text-shadow: #0202035e 1px 2px;
   letter-spacing: 2px;
   font-weight: 200;
@@ -29,6 +30,18 @@ h2, h3, h4, h5, h6 {
     font-family: Raleway, sans-serif;
     color: white;
     text-shadow: 0px 2px 4px rgba(0,0,0,.4);
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+p {
+  font-size: 75%;
 }
 
 button {
@@ -73,7 +86,9 @@ a:hover {
   color: #d79544;
 }
 
-
+div.col-md-3.col-sm-12.sidebar-container.mt-5 {
+  margin-top: 0!important;
+}
 /*---------------------------------------------------Navbar*/
 .bg-steel {
     background-color: #d4f7ffc4;
@@ -83,7 +98,7 @@ a:hover {
 }
 
 .fixed-top {
-  background-color: #ffffff57;
+  background-color: #ffffffcc;
   border-bottom: 1px solid #87b2de69;
 }
 
@@ -149,7 +164,7 @@ a:hover {
   width: 91%;
   margin: 0 auto;
   position: relative;
-  top: -20px;
+  top: 20px;
   height: 200px;
 }
 
@@ -185,8 +200,17 @@ a:hover {
   border-color:#4E5E30;
 }
 
+p.card-text {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .card-img-top {
   width: 70%
+}
+
+.card-body {
+  padding: 1rem;
 }
 
 .card-body-membership {
@@ -197,10 +221,27 @@ a:hover {
   color: #32325d;
   border-bottom: 1.1px solid #e3ec62;
   margin: 0px 70px 0px;
+  font-size: 1.9rem;
 }
 
 .card-text-membership{
   color: #32325d;
+}
+
+.carousel-inner {
+  height: 250px; 
+  background: url('../img/object-background.png');
+  background-position: center; 
+  background-size: cover;
+}
+
+.sidebar-container {
+  margin-top: 0;
+  background-color: #7ab6dc33;
+}
+
+.list-group {
+  margin-bottom: 2rem;
 }
 
 .list-group-item {
@@ -283,4 +324,83 @@ a:hover {
 
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+
+
+/*---Medium Screen (ipad)---*/
+@media (min-width: 481px){
+
+  body {
+    min-height: 100vh;
+  }
+
+  h1 {
+     font-size: 3rem;
+     visibility: visible;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 80%;
+  }
+
+  .carousel-inner {
+    height: 300px; 
+  }
+
+  .list-item-card .card-img-block, .list-item-card-premium .card-img-block {
+    width: 91%;
+    margin: 0 auto;
+    position: relative;
+    top: -20px;
+    height: 200px;
+  }
+
+  .sidebar-container {
+    background-color: #ffffff00;
+    }
+  .list-item-card p, .list-item-card-premium p {
+      font-size: 11px;
+  }
+}
+
+/*---Large Screen---*/
+@media (min-width: 769px) {
+
+  h1 {
+    font-size: 4rem;
+    visibility: visible;
+ }
+
+ h3 {
+  font-size: 1.75rem;
+}
+
+ h4 {
+   font-size: 1.5rem;
+ }
+
+ p {
+   font-size: 90%;
+ }
+
+ .carousel-inner {
+   height: 350px; 
+ }
+
+ .sidebar-container {
+  margin-top: 4.5rem;
+  background-color: #ffffff00;
+  }
+
+.list-item-card p, .list-item-card-premium p {
+    font-size: 11px;
+}
+
+
+
+
 }

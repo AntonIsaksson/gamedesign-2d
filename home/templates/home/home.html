@@ -7,16 +7,16 @@
 {% block content %}
 {% load static %}
 <h1 id="main-heading">GameDesign - 2D</h1>
-<div class="row mt-5 mb-5">
+<div class="row mt-5 mb-5 ml-1 mr-1">
     <!-- CREATURE CAROUSEL -->
     <div class="container col-md-6">
-        <div class="card">
+        <div class="card mb-4">
             <div class="card-body">
                 <h4 class="card-title"><a href="{% url 'creatures' %}">Animated Characters</a></h4>
                 <p class="card-text">Characters for your 2D games!</p>
             </div>
             <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner " role="listbox" style="height: 350px; background: url('../static/img/object-background.png'); background-position: center; background-size: cover;"> 
+                <div class="carousel-inner " role="listbox"> 
                     {% for item in object_list %}
                         {% if item.category.title == 'Animated Creatures' %}
                             {% if forloop.first %}
@@ -43,13 +43,13 @@
     <!-- /////-->
     <!-- Object CAROUSEL -->
     <div class="container col-md-6">
-        <div class="card">
+        <div class="card mb-4">
             <div class="card-body">
                 <h4 class="card-title"><a href="{% url 'objects' %}">Animated Objects</a></h4>
                 <p class="card-text">Objects & items for your 2D games!</p>
             </div>
             <div id="carouselExampleControls2" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner " role="listbox" style=" height: 350px; background: url('../static/img/object-background.png'); background-position: center; background-size: cover;">
+                <div class="carousel-inner " role="listbox">
                     {% for item in object_list %}
                         {% if item.category.title == 'Animated Objects' %}
                             {% if forloop.counter == 8 %}
@@ -81,7 +81,7 @@
                     <p class="card-text">Landscapes for your 2D games!</p>
                 </div>
                 <div id="carouselExampleControls3" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner  " role="listbox" style=" height: 400px; background: url('../static/img/object-background.png'); background-position: center; background-size: cover;">
+                    <div class="carousel-inner  " role="listbox">
                         
                         {% for item in object_list %}
                             {% if item.category.title == 'Landscapes' %}

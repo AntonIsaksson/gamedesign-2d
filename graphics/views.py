@@ -81,7 +81,7 @@ class DetailView(LoginRequiredMixin, DetailView):
 
 
 """Order Item FormView"""
-class OrderItemView(FormView):
+class OrderItemView(LoginRequiredMixin, FormView):
     template_name = 'graphics/order_item.html'
     form_class = ItemOrderForm
     success_url = '/'
