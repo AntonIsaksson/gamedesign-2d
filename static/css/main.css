@@ -1,8 +1,9 @@
-
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+
+
+/*------------------------------------------------------------------------------------------Custom CSS*/
 body {
-    /* background: #f1f1f1;  */
     background: url("https://designshack.net/wp-content/uploads/abstract-background.jpg") rgba(219, 238, 255, 0.884);
     background-position: center;
     background-repeat: no-repeat;
@@ -10,21 +11,8 @@ body {
     background-blend-mode: lighten;
     color: #333333;
     margin-top: 5rem;
-    
-    /* font-family: 'Varela Round', sans-serif */
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
-}
-
-h2, h3, h4, h5, h6 {
-    /* color: #6a6a6a; */
-    font-family: Raleway, sans-serif;
-    /* font-family: 'Varela Round', sans-serif */
-    /* font-family: 'Taviraj', serif; */
-    /* font-weight: 400; */
-
-    color: white;
-    text-shadow: 0px 2px 4px rgba(0,0,0,.4);
 }
 
 h1 {
@@ -37,14 +25,11 @@ h1 {
   text-transform: uppercase;
 }
 
-/* #main-heading{
-  font-family: Viking, sans-serif;
-  color: white;
-  font-size: 4rem;
-  text-shadow: #0202035e 1px 2px;
-  letter-spacing: 2px;
-  font-weight: 200;
-} */
+h2, h3, h4, h5, h6 {
+    font-family: Raleway, sans-serif;
+    color: white;
+    text-shadow: 0px 2px 4px rgba(0,0,0,.4);
+}
 
 button {
   border: none;
@@ -88,6 +73,8 @@ a:hover {
   color: #d79544;
 }
 
+
+/*---------------------------------------------------Navbar*/
 .bg-steel {
     background-color: #d4f7ffc4;
     height: 4.8rem;
@@ -125,6 +112,8 @@ a:hover {
   color: #6a6a6a;
 }
 
+
+/*---------------------------------------Main Content*/
 .content-container {
   text-align: center;
 }
@@ -133,27 +122,17 @@ a:hover {
   color: rgb(101, 152, 170);
 }
 
-
 .home-container {
   width: 100%;
   height: 150%;
   border: 1px solid #d3d0d0;
 }
 
-
-.account-img {
-  height: 125px;
-  width: 125px;
-  margin-right: 20px;
-  margin-bottom: 16px;
-}
-
 .form-control {
   font-size: .9rem;
   padding: .375rem .5rem;
 }
-/*List Item Card */
-
+/*-------------------------------------------Cards */
 
 .list-item-card {
   margin-top:20px;
@@ -165,10 +144,8 @@ a:hover {
   border: 2px solid rgb(255, 199, 14);
 }
 
-
 .list-item-card .card-img-block,
 .list-item-card-premium .card-img-block {
-
   width: 91%;
   margin: 0 auto;
   position: relative;
@@ -188,7 +165,6 @@ a:hover {
 .list-item-card-premium .card-img-block img {
   border-radius:5px;
   width: 150px;
-  /*box-shadow:0 0 10px rgba(0,0,0,0.63);*/
 }
 
 .list-item-card h5,
@@ -212,7 +188,6 @@ a:hover {
 .card-img-top {
   width: 70%
 }
-
 
 .card-body-membership {
   height: 150px;
@@ -240,12 +215,7 @@ a:hover {
 }
 
 
-
-  
-
-
-
-
+/*------------------------------------------Stripe */
 #card-errors {
   height: 20px;
   padding: 4px 0;
@@ -292,10 +262,6 @@ a:hover {
   transform: translateY(-80px);
 }
 
-/**
- * The CSS shown here will not be introduced in the Quickstart guide, but shows
- * how you can use CSS to style your Element's container.
- */
 .StripeElement {
   background-color: white;
   height: 40px;

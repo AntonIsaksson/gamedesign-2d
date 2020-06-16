@@ -171,7 +171,5 @@ def cancelSubscription(request):
     user_membership.save()
 
     messages.info(
-        request, "Successfully cancelled membership. We have sent an email")
-    # sending an email here
-
+        request, "Successfully cancelled membership!")
     return redirect(reverse('memberships:select'))

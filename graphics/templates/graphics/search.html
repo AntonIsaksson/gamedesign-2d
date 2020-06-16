@@ -1,16 +1,13 @@
 {% extends 'base.html' %}
 {% block sidebar %}
-    <a href="#"><li class="list-group-item list-group-item-light">All Free Characters</li></a>
-    <a href="#"><li class="list-group-item list-group-item-light">All Premium Characters</li></a>
-    <a href="#"><li class="list-group-item list-group-item-light">Coming Up!</li></a>
+    <a href="{% url 'creatures' %}"><li class="list-group-item list-group-item-light">Characters</li></a>
+    <a href="{% url 'objects' %}"><li class="list-group-item list-group-item-light">Objects</li></a>
+    <a href="{% url 'landscapes' %}"><li class="list-group-item list-group-item-light">Landscapes</li></a>
 {% endblock sidebar %}
 {% block content %}
 <h1 class="pb-5">Search Results</h1>
-
-
 <div class="container">
     <div class="row">
-
         {% for item in designs %}
         <div class="col-md-4 mt-4 mb-4">
             <div class="card display list-item-card">
@@ -27,11 +24,6 @@
             </div>
         </div>
         {% endfor %} 
-
     </div>
 </div>
-    
-
-
-    
 {% endblock content %}

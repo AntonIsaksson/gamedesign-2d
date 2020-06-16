@@ -1,4 +1,4 @@
-// Create a Stripe client.
+//----------JAVASCRIPT FOR HANDLING STRIPE PAYMENTS---------//
 
 var stripe = Stripe('STRIPE_PUBLISHABLE_KEY');
 

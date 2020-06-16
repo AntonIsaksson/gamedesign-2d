@@ -11,9 +11,9 @@
         <div class="row no-gutters">
             <div class="col-md-5">
                 {% if object.category.title == 'Landscapes' %}
-                <img class="card-img-top w-100" src="{{ object.image.url }}" alt="Card image cap">
+                    <img class="card-img-top w-100" src="{{ object.image.url }}" alt="Card image cap">
                 {% else %}
-                <img class="card-img-top" src="{{ object.image.url }}" alt="Card image cap">
+                    <img class="card-img-top" src="{{ object.image.url }}" alt="Card image cap">
                 {% endif %}
             </div>
             <div class="offset-md-1 col-md-6">
@@ -38,5 +38,4 @@
 {% else %}
     <h3>Please Upgrade Membership!</h3>
 {% endif %}
-
 {% endblock %}

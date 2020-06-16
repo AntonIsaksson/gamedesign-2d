@@ -5,12 +5,11 @@
 {% endblock sidebar %}
 {% block content %}
 <h1 class="pb-5">Animated Creatures</h1>
-
 <hr>
+<!------------Free Characters-------------->
 <h3>Latest Free Characters</h3>
 <div class="container">
     <div class="row">
-
         {% for object in object_list %}
             {% for item in object.designs_set.all|slice:":3"  %} 
                 {% if object.membership_type == 'Free' and item.category.title == 'Animated Creatures'%}
@@ -29,37 +28,31 @@
                 {% endif %}
             {% endfor %}
         {% endfor %} 
-
     </div>
 </div>
-
 <hr>
+<!------------Premium Characters-------------->
 <h3>Latest Premium Characters</h3>
 <div class="container">
     <div class="row">
-
         {% for object in object_list %}
             {% for item in object.designs_set.all|slice:":3" %} 
-            {% if object.membership_type != 'Free' and item.category.title == 'Animated Creatures' %}
-                <div class="col-md-4 mt-4 mb-4">
-                    <div class="card display list-item-card-premium">
-                        <div class="card-img-block">
-                            <img class="card-img-top" src="{{ item.image.url }}" alt="Card image cap">
-                        </div>
-                        <div class="card-body pt-0">
-                            <h5 class="card-title"><a href="{% url 'detail' item.id %}">{{ item.title }}</a></h5>
-                            <p class="card-text">{{ item.text_content }}</p>
-                            <a href="{% url 'detail' item.id %}" class="btn btn-sm btn-outline-success">View & Download</a>
+                {% if object.membership_type != 'Free' and item.category.title == 'Animated Creatures' %}
+                    <div class="col-md-4 mt-4 mb-4">
+                        <div class="card display list-item-card-premium">
+                            <div class="card-img-block">
+                                <img class="card-img-top" src="{{ item.image.url }}" alt="Card image cap">
+                            </div>
+                            <div class="card-body pt-0">
+                                <h5 class="card-title"><a href="{% url 'detail' item.id %}">{{ item.title }}</a></h5>
+                                <p class="card-text">{{ item.text_content }}</p>
+                                <a href="{% url 'detail' item.id %}" class="btn btn-sm btn-outline-success">View & Download</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
             {% endfor %}
         {% endfor %} 
-
     </div>
 </div>
-    
-
-    
 {% endblock content %}

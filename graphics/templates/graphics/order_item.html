@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% block sidebar %}
+    <a href="{% url 'creatures' %}"><li class="list-group-item list-group-item-light">Characters</li></a>
+    <a href="{% url 'objects' %}"><li class="list-group-item list-group-item-light">Objects</li></a>
+    <a href="{% url 'landscapes' %}"><li class="list-group-item list-group-item-light">Landscapes</li></a>
+{% endblock sidebar %}
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="content-section">

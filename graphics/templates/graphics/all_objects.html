@@ -6,11 +6,9 @@
 {% endblock sidebar %}
 {% block content %}
 <h1 class="pb-5">Animated Objects</h1>
-
 <hr>
 <div class="container">
     <div class="row">
-
         {% for object in object_list %}
             {% for item in object.designs_set.all %}
                 {% if item.category.title == 'Animated Objects'%}
@@ -37,8 +35,6 @@
                 {% endif %}
             {% endfor %}
         {% endfor %} 
-
     </div>
 </div>
-
 {% endblock content %}

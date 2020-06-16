@@ -17,8 +17,7 @@
 			{% endif %}
 				<h2 class="card-title card-title-membership mt-3">{{ object.membership_type }}</h2>
 				<h5 class="card-text card-text-membership mt-4">Price:<strong> {{ object.price }}:-</strong><small>/month</small></h5>
-				<div class="card-body card-body-membership">
-				  	
+				<div class="card-body card-body-membership">	
 					{% if object.membership_type != 'Free' %}
 					<p class="card-text">Access to ALL content on the website!</p>
 					<form method="POST" action="{% url 'memberships:select' %}">
@@ -42,7 +41,4 @@
 		{% endfor %}
 	</div>
 </div>
-
-
-
 {% endblock content %}
