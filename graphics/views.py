@@ -95,21 +95,3 @@ class OrderItemView(FormView):
         
         return super().form_valid(form)
 
-
-# """Send Requested Item"""
-# def order_item(request):
-
-#     if request.method == "POST":
-
-#         form = ItemOrderForm(request.POST)
-#         if form.is_valid():
-#             send_mail('Order 2D Item',
-#                 'Thank you for your order! You will have get your order within 7 days.',
-#                 'hanzzanton@gmail.com',
-#                 ['anton.isak@outlook.com'],
-#                 fail_silently=False)
-#             messages.success(request, f'Your request is being handled. An confirmation email has been sent to ')
-#             return redirect('home')
-#         else:
-#             form = ItemOrderForm()
-#         return render(request, 'graphics/order_item.html', {'form': form})
